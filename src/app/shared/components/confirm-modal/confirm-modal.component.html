@@ -1,0 +1,11 @@
+<div class="modal-backdrop" *ngIf="open" (click)="cancel.emit()"></div>
+<div class="modal" *ngIf="open">
+  <div class="modal-content" (click)="$event.stopPropagation()">
+    <h3>Confirmação</h3>
+    <p>{{ message }}</p>
+    <div class="modal-actions">
+      <button type="button" (click)="cancel.emit()">Cancelar</button>
+      <button type="button" (click)="confirm.emit()">Confirmar</button>
+    </div>
+  </div>
+</div>

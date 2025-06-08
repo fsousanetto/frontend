@@ -1,0 +1,34 @@
+<section class="dashboard">
+  <div class="dashboard-cards">
+    <app-balance-card [balance]="balance"></app-balance-card>
+    <app-recent-transactions-card
+      [transactions]="recent"
+      (deleteTransaction)="onDeleteTransaction($event)"
+    ></app-recent-transactions-card>
+  </div>
+  <div class="dashboard-cards">
+    <!-- Adicionar gráfico aqui -->
+    <app-history-chart-card [history]="history"></app-history-chart-card>
+  </div>
+  <button
+    class="fab-add-transaction"
+    (click)="openAddTransactionModal()"
+    title="Nova transação"
+  >
+    <i class="fa fa-plus"></i>
+  </button>
+  <app-add-transaction-modal
+    [open]="showAddTransactionModal"
+    [categories]="categories"
+    (close)="closeAddTransactionModal()"
+    (save)="saveTransaction($event)"
+  >
+  </app-add-transaction-modal>
+  <app-confirm-modal
+    [open]="showConfirmModal"
+    message="Tem certeza que deseja excluir esta transação?"
+    (confirm)="confirmDeleteTransaction()"
+    (cancel)="cancelDeleteTransaction()"
+  >
+  </app-confirm-modal>
+</section>

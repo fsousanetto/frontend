@@ -1,0 +1,67 @@
+.dashboard {
+  font-size: 1.2rem;
+  font-weight: 300;
+}
+
+.fab-add-transaction {
+  position: fixed;
+  bottom: 2.5rem;
+  right: 2.5rem;
+  width: 50px;
+  height: 50px;
+  border-radius: 50%;
+  background: #1e9e6a;
+  color: #fff;
+  border: none;
+  box-shadow: 0 4px 16px rgba(30, 158, 106, 0.15);
+  font-size: 2rem;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  cursor: pointer;
+  z-index: 1000;
+  transition: background 0.2s, box-shadow 0.2s;
+}
+.fab-add-transaction:hover {
+  background: #137950;
+  box-shadow: 0 6px 24px rgba(30, 158, 106, 0.22);
+}
+@media (max-width: 768px) {
+  .dashboard-cards {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    width: 100%;
+    margin-top: 1rem;
+  }
+}
+@media (min-width: 769px) and (max-width: 1024px) {
+  .dashboard-cards {
+    display: flex;
+    align-items: flex-start;
+    justify-content: space-between;
+    width: 700px;
+    margin-top: 1.5rem;
+    border-bottom: 1px solid #e2e8f0;
+  }
+}
+@media (min-width: 1025px) {
+  .dashboard-cards {
+    display: flex;
+    align-items: flex-start;
+    justify-content: space-between;
+    width: 1000px;
+    margin-top: 1.5rem;
+    border-bottom: 1px solid #e2e8f0;
+  }
+}
+@media (max-width: 900px) {
+  .fab-add-transaction {
+    bottom: 1.2rem;
+    right: 1.2rem;
+    width: 52px;
+    height: 52px;
+    font-size: 1.5rem;
+  }
+}

@@ -1,0 +1,116 @@
+.header {
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  height: 64px;
+  width: 90%;
+  background: #f3070700;
+  // box-shadow: 0 2px 8px rgba(0,0,0,0.07);
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 0 2rem;
+  z-index: 500;
+  gap: 1.5rem;
+}
+
+.header button {
+  background: none;
+  border: none;
+  font-size: 1.7rem;
+  color: #1a202c;
+  cursor: pointer;
+  margin-right: 1.2rem;
+  display: flex;
+  align-items: center;
+  transition: color 0.2s;
+}
+.header button:focus {
+  outline: 2px solid #1e9e6a;
+}
+
+.avatar {
+  display: flex;
+  align-items: center;
+  gap: 1.2rem;
+}
+.avatar .search {
+  font-size: 1.3rem;
+  color: #1a202c;
+  background: #f5f5f5;
+  border-radius: 50%;
+  width: 36px;
+  height: 36px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  margin-right: 0.5rem;
+  cursor: pointer;
+  transition: background 0.2s;
+}
+.avatar .search:hover {
+  background: #e6f7f1;
+  color: #1e9e6a;
+}
+.avatar img {
+  width: 38px;
+  height: 38px;
+  border-radius: 50%;
+  object-fit: cover;
+  border: 2px solid #1e9e6a;
+}
+.avatar .user-info {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-end;
+}
+.avatar .user-info p {
+  margin: 0;
+  font-size: 1rem;
+  font-weight: 500;
+  color: #1a202c;
+}
+
+// MOBILE/TABLET: botão hamburger à esquerda, header compacto
+@media (min-width: 768px) and (max-width: 1023px) {
+  .header {
+    height: 56px;
+    width: 690px;
+    padding: 0 1rem;
+    gap: 0.7rem;
+  }
+  .header button {
+    margin-right: 0.7rem;
+    font-size: 1.5rem;
+  }
+  .avatar .search {
+    width: 32px;
+    height: 32px;
+    font-size: 1.1rem;
+  }
+  .avatar img {
+    width: 32px;
+    height: 32px;
+  }
+  .avatar .user-info p {
+    font-size: 0.95rem;
+  }
+}
+// Esconde o botão hamburger em telas grandes (menu fixo)
+@media (min-width: 1024px) {
+  .header {
+    left: auto;
+    right: 0;
+    width: calc(100vw - 260px);
+    margin-left: 260px;
+    border: none;
+    background-color: transparent;
+    // box-shadow: 0 2px 8px rgba(0,0,0,0.07);
+    justify-content: flex-end;
+    padding: 0 2.5rem 0 1.5rem;
+  }
+  .header button {
+    display: none;
+  }
+}

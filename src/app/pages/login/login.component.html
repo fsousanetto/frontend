@@ -1,0 +1,110 @@
+<div class="container">
+  <div class="bg-container">
+    <img src="../../../assets/img/pork-bg.svg" alt="" />
+  </div>
+
+  <div class="login-container">
+    <form [formGroup]="loginForm" (ngSubmit)="onSubmit()" class="login-form">
+      <h4 class="subtitle">Bem-vindo(a) de volta</h4>
+      <h3 class="title">Faça login na sua conta!</h3>
+
+      <div class="form-group">
+        <label for="email">E-mail</label>
+
+        <input
+          id="email"
+          type="email"
+          formControlName="email"
+          placeholder="Digite seu e-mail"
+          class="form-control"
+          autocomplete="off"
+        />
+
+        <div
+          class="error-password"
+          *ngIf="
+            loginForm.get('email')?.touched && loginForm.get('email')?.invalid
+          "
+        >
+          <small *ngIf="loginForm.get('email')?.errors?.['required']">
+            O e-mail é obrigatório.
+          </small>
+          <small *ngIf="loginForm.get('email')?.errors?.['email']">
+            Informe um e-mail válido.
+          </small>
+        </div>
+      </div>
+
+      <div class="form-group">
+        <label for="password">Senha</label>
+
+        <div class="input-container">
+          <input
+            id="password"
+            [type]="passwordVisible ? 'text' : 'password'"
+            formControlName="password"
+            placeholder="Digite sua senha"
+            class="form-control"
+          />
+
+          <i
+            class="fa fa-eye"
+            aria-hidden="true"
+            type="button"
+            (click)="togglePasswordVisibility()"
+            [ngClass]="{
+              'fa-eye': !passwordVisible,
+              'fa-eye-slash': passwordVisible
+            }"
+          >
+          </i>
+        </div>
+
+        <div
+          class="error"
+          *ngIf="
+            loginForm.get('password')?.touched &&
+            loginForm.get('password')?.invalid
+          "
+        >
+          <small *ngIf="loginForm.get('password')?.errors?.['required']">
+            A senha é obrigatória.
+          </small>
+          <small *ngIf="loginForm.get('password')?.errors?.['minlength']">
+            A senha deve ter no mínimo 6 caracteres.
+          </small>
+        </div>
+      </div>
+
+      <div class="forgot-password">
+        <div class="remember-me">
+          <input type="checkbox" id="rememberMe" formControlName="rememberMe" />
+          <label for="rememberMe">Lembre de mim</label>
+        </div>
+        <div class="forgot-password-link">
+          <p><a routerLink="/forgot-password">Esqueceu sua senha?</a></p>
+        </div>
+      </div>
+
+      <button type="submit" [disabled]="loginForm.invalid" class="btn-submit">
+        {{ loading ? "Carregando..." : "Entrar na conta" }}
+      </button>
+
+      <button
+        type="button"
+        [disabled]="loginForm.invalid"
+        class="btn-submit-google"
+        (click)="loginWithGoogle($event)"
+      >
+        <i class="fab fa-google"></i>
+        {{ loadingGoogle ? "Carregando..." : "ou faça login com o Google" }}
+      </button>
+
+      <div class="register-link">
+        <p>
+          Não tem uma conta? <a routerLink="/users/register">Cadastre-se</a>
+        </p>
+      </div>
+    </form>
+  </div>
+</div>

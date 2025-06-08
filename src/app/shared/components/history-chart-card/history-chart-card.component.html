@@ -1,0 +1,19 @@
+<section class="card history-chart-card">
+  <div class="card-header">
+    <span>Histórico por categoria</span>
+  </div>
+  <div class="chart-container">
+    <!-- Aqui você pode integrar um gráfico real (ng2-charts, apexcharts, etc) -->
+    <ul class="chart-list">
+      <li *ngFor="let h of history">
+        <span class="category">{{
+          categoryLabels[h.category] || h.category
+        }}</span>
+        <span class="total">{{
+          h.total | currency : "BRL" : "symbol" : "1.2-2" : "pt-BR"
+        }}</span>
+      </li>
+      <li *ngIf="!history?.length" class="empty">Nenhum dado de histórico.</li>
+    </ul>
+  </div>
+</section>

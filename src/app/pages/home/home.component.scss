@@ -1,0 +1,103 @@
+.container {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  height: 100vh;
+  width: 340px;
+  overflow-x: hidden;
+}
+
+.home-container {
+  position: absolute;
+  top: 0;
+  margin: 5.3rem 0 auto;
+  width: 340px;
+}
+
+.title {
+  font-size: 1.3rem;
+  font-weight: 500;
+  color: #1a202c;
+  margin-bottom: 1rem;
+}
+
+.subtitle {
+  font-size: 1rem;
+  font-weight: 400;
+  color: #6a6969;
+  margin-bottom: 0.7rem;
+}
+
+@media (min-width: 768px) {
+  .container {
+    width: 704px;
+  }
+
+  .home-container {
+    width: 704px;
+    margin: 0 auto;
+    position: absolute;
+    top: 0;
+    margin: 5.3rem 0 auto;
+  }
+}
+
+@media (min-width: 1024px) and (max-width: 1439px) {
+  .container {
+    width: 704px;
+    margin-left: 16rem;
+    position: relative;
+  }
+
+  .home-container {
+    width: 475px;
+    margin: 0 auto;
+    position: absolute;
+    top: 0;
+    left: 0;
+    margin: 1rem 0 auto;
+  }
+
+  .title {
+    font-size: 1.3rem;
+  }
+
+  .subtitle {
+    font-size: 0.9rem;
+  }
+}
+
+@media (min-width: 1440px) and (max-width: 1599px) {
+  .container {
+    width: 69rem;
+    margin-left: 16rem;
+    position: relative;
+  }
+
+  .home-container {
+    width: 700px;
+    margin: 0 auto;
+    position: absolute;
+    top: 0;
+    left: 0;
+    margin: 1rem 0 auto;
+  }
+}
+
+@media (min-width: 1600px) {
+  .container {
+    width: 1570px;
+    margin-left: 16rem;
+    position: relative;
+  }
+
+  .home-container {
+    width: 700px;
+    margin: 0 auto;
+    position: absolute;
+    top: 0;
+    left: 0;
+    margin: 1rem 0 auto;
+  }
+}

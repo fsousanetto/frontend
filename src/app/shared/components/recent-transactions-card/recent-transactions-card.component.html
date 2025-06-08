@@ -1,0 +1,34 @@
+<section class="card recent-transactions-card">
+  <div class="card-header">
+    <span>Últimas transações</span>
+  </div>
+  <div class="transaction-container">
+    <ul class="transactions-list">
+      <li *ngFor="let t of transactions">
+        <span class="category">
+          {{ (t.category && categoryLabels[t.category.id]) || (t.category && t.category.name) || (t.category && t.category.id) || 'Sem categoria' }}
+        </span>
+        <span
+          class="amount"
+          [ngClass]="{
+            income: t.type === 'income',
+            expense: t.type === 'expense'
+          }"
+        >
+          {{ t.amount | currency : "BRL" : "symbol" : "1.2-2" : "pt-BR" }}
+        </span>
+        <span class="date">{{ t.date | date : "shortDate" }}</span>
+        <button
+          class="delete-btn"
+          (click)="deleteTransaction.emit(t.id)"
+          title="Excluir"
+        >
+          <i class="fa fa-trash"></i>
+        </button>
+      </li>
+      <li *ngIf="!transactions?.length" class="empty">
+        Nenhuma transação encontrada.
+      </li>
+    </ul>
+  </div>
+</section>

@@ -1,0 +1,78 @@
+.modal-backdrop {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100vw;
+  height: 100vh;
+  background: rgba(0, 0, 0, 0.25);
+  z-index: 1100;
+}
+.modal {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100vw;
+  height: 100vh;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  z-index: 1200;
+}
+.modal-content {
+  background: #fff;
+  border-radius: 16px;
+  box-shadow: 0 4px 24px rgba(0, 0, 0, 0.13);
+  padding: 2rem 2.5rem;
+  min-width: 320px;
+  max-width: 95vw;
+  width: 100%;
+  max-width: 400px;
+  position: relative;
+}
+.modal-content h2 {
+  margin-top: 0;
+  margin-bottom: 1.5rem;
+  font-size: 1.4rem;
+  font-weight: 600;
+}
+.form-group {
+  margin-bottom: 1.1rem;
+  display: flex;
+  flex-direction: column;
+}
+.form-group label {
+  font-size: 1rem;
+  margin-bottom: 0.3rem;
+  color: #444;
+}
+.form-group input,
+.form-group select {
+  padding: 0.5rem 0.7rem;
+  border: 1px solid #e0e0e0;
+  border-radius: 6px;
+  font-size: 1rem;
+}
+.modal-actions {
+  display: flex;
+  justify-content: flex-end;
+  gap: 1rem;
+  margin-top: 1.5rem;
+}
+.modal-actions button {
+  padding: 0.5rem 1.2rem;
+  border-radius: 6px;
+  border: none;
+  font-size: 0.5rem;
+  cursor: pointer;
+  background: #1e9e6a;
+  color: #fff;
+  transition: background 0.2s;
+}
+.modal-actions button[type="button"] {
+  background: #e0e0e0;
+  color: #222;
+}
+.modal-actions button:disabled {
+  background: #b2b2b2;
+  cursor: not-allowed;
+}

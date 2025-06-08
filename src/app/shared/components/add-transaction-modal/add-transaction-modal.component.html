@@ -1,0 +1,49 @@
+<div class="modal-backdrop" *ngIf="open" (click)="onClose()"></div>
+<div class="modal" *ngIf="open">
+  <div class="modal-content" (click)="$event.stopPropagation()">
+    <h2>Nova Transação</h2>
+    <form [formGroup]="form" (ngSubmit)="onSave()">
+      <div class="form-group">
+        <label>Tipo</label>
+        <select formControlName="type">
+          <option value="expense">Despesa</option>
+          <option value="income">Receita</option>
+        </select>
+      </div>
+      <div class="form-group">
+        <label>Categoria</label>
+        <select formControlName="name">
+          <option
+            *ngFor="let cat of categories"
+            [value]="cat.name"
+            [hidden]="cat.type !== form.value.type"
+          >
+            {{ cat.name }}
+          </option>
+        </select>
+      </div>
+      <div class="form-group">
+        <label>Valor</label>
+        <input
+          type="number"
+          formControlName="amount"
+          min="0.01"
+          step="0.01"
+          placeholder="Digite o valor"
+        />
+      </div>
+      <div class="form-group">
+        <label>Data</label>
+        <input type="date" formControlName="date" />
+      </div>
+      <div class="form-group">
+        <label>Descrição</label>
+        <input type="text" formControlName="description" placeholder="Descrição (Opcional)" />
+      </div>
+      <div class="modal-actions">
+        <button type="button" (click)="onClose()">Cancelar</button>
+        <button type="submit" [disabled]="form.invalid">Salvar</button>
+      </div>
+    </form>
+  </div>
+</div>

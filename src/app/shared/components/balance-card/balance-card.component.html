@@ -1,0 +1,13 @@
+<section class="container">
+  <div class="balance-card">
+    <div class="balance-text">
+      <p class="label">Saldo total</p>
+      <h2 class="amount">
+        {{ balance | currency : "BRL" : "symbol" : "1.2-2" : "pt-BR" }}
+      </h2>
+    </div>
+    <div class="balance-image">
+      <img src="assets/img/pork.svg" alt="Cofrinho com plantas" />
+    </div>
+  </div>
+</section>

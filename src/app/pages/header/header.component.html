@@ -1,0 +1,15 @@
+<div class="header">
+  <button (click)="toggleMenu()">
+    <i class="fa fa-bars" aria-hidden="true"></i>
+  </button>
+
+  <div class="avatar">
+    <div class="search">
+      <i class="fa fa-search"></i>
+    </div>
+    <img src="../../../assets/img/avatar.png" alt="Avatar" />
+    <div class="user-info" (click)="goToProfile()">
+      <p>{{ userName }}</p>
+    </div>
+  </div>
+</div>

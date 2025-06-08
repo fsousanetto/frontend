@@ -1,0 +1,40 @@
+<nav class="sidebar" [ngClass]="isOpenMenu ? 'open' : ''">
+  <div class="logo">
+    <p>Controle<span>Gastos</span></p>
+  </div>
+
+  <div id="nav-links">
+    <ul class="nav-links" [ngClass]="isOpenMenu ? 'open' : ''">
+      <li [routerLinkActive]="'active'">
+        <a [routerLink]="'/home'" (click)="closeMenu()"
+          ><i class="fa fa-house"></i> Dashboard</a
+        >
+      </li>
+      <li [routerLinkActive]="'active'">
+        <a [routerLink]="'/wallet'" (click)="closeMenu()"
+          ><i class="fa fa-wallet"></i> Carteira</a
+        >
+      </li>
+      <!-- <li [routerLinkActive]="'active'">
+        <a [routerLink]="'/profile'" (click)="closeMenu()"
+          ><i class="fa fa-user"></i> Perfil</a
+        >
+      </li> -->
+      <!-- <li [routerLinkActive]="'active'">
+        <a [routerLink]="'/settings'" (click)="closeMenu()"
+          ><i class="fa fa-gear"></i> Configurações</a
+        >
+      </li> -->
+      <li [routerLinkActive]="'active'">
+        <a [routerLink]="'/help-center'" (click)="closeMenu()"
+          ><i class="fa fa-question"></i> Ajuda</a
+        >
+      </li>
+      <li>
+        <a class="sign-out" [routerLink]="'/auth/login'" (click)="logout()"
+          ><i class="fa fa-sign-out sign-out"></i> Sair</a
+        >
+      </li>
+    </ul>
+  </div>
+</nav>
