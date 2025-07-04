@@ -1,12 +1,7 @@
 import { Component, Input } from '@angular/core';
 import { categoryLabels } from '../../../core/services/utils/category-labels';
 import { CoreModule } from '../../../core/core.module';
-
-export interface HistoryItem {
-  categoryId: string;
-  category: string;
-  total: number;
-}
+import { HistoryItem } from '../../../core/interfaces/transaction.interface';
 
 @Component({
   selector: 'app-history-chart-card',

@@ -62,11 +62,9 @@ export class AuthService {
 
       if (user) {
         const idToken = await user.getIdToken(true);
-        console.log('ID Token do Google:', idToken);
         const response: any = await firstValueFrom(
           this.http.post('http://localhost:7654/api/auth/google', { idToken })
         );
-
         if (response && response.accessToken) {
           localStorage.setItem(this.TOKEN, response.accessToken);
           this.router.navigate(['/home']);

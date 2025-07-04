@@ -36,7 +36,12 @@
 }
 .total {
   font-weight: 600;
+}
+.total.income {
   color: #1e9e6a;
+}
+.total.expense {
+  color: #e74c3c;
 }
 .empty {
   text-align: center;

@@ -3,13 +3,16 @@
     <span>Histórico por categoria</span>
   </div>
   <div class="chart-container">
-    <!-- Aqui você pode integrar um gráfico real (ng2-charts, apexcharts, etc) -->
+    <!-- Integrar um gráfico real aqui (ng2-charts, apexcharts, etc) -->
     <ul class="chart-list">
       <li *ngFor="let h of history">
         <span class="category">{{
           categoryLabels[h.category] || h.category
         }}</span>
-        <span class="total">{{
+        <span class="total" [ngClass]="{
+          income: h.type === 'income',
+          expense: h.type === 'expense'
+        }">{{
           h.total | currency : "BRL" : "symbol" : "1.2-2" : "pt-BR"
         }}</span>
       </li>

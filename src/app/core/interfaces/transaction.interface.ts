@@ -18,3 +18,10 @@ export interface Transaction {
   createdAt?: Date;
   updatedAt?: Date;
 }
+
+export interface HistoryItem {
+  categoryId: string;
+  category: string;
+  total: number;
+  type: TransactionType;
+}
