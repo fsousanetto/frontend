@@ -23,6 +23,14 @@ export class WalletService {
     return this.http.get<{ recent: Transaction[] }>(`${environment.apiUrl}/transactions/recent`);
   }
 
+  getTotalIncome(): Observable<{ totalIncome: number }> {
+    return this.http.get<{ totalIncome: number }>(`${environment.apiUrl}/transactions/total-income`);
+  }
+  
+  getTotalExpense(): Observable<{ totalExpense: number }> {
+    return this.http.get<{ totalExpense: number }>(`${environment.apiUrl}/transactions/total-expense`);
+  }
+
   createTransaction(data: Transaction) {
     return this.http.post(`${environment.apiUrl}/transactions`, data);
   }

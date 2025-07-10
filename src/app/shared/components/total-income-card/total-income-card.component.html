@@ -1,0 +1,15 @@
+<section class="container">
+  <div class="totalIncome-card">
+    <div class="totalIncome-text">
+      <p class="label">Total de Receitas</p>
+      <h2 class="amount" [class.loading]="loading">
+        <span *ngIf="!loading">{{ formattedIncome }}</span>
+        <span *ngIf="loading" class="loading-skeleton">Carregando...</span>
+      </h2>
+    </div>
+    <div class="totalIncome-image">
+      <i class="fas fa-arrow-up" style="color: #22c55e; font-size: 24px;"></i>
+      <!-- Separar o css depois -->
+    </div>
+  </div>
+</section>

@@ -1,13 +1,15 @@
 <section class="dashboard">
   <div class="dashboard-cards">
     <app-balance-card [balance]="balance"></app-balance-card>
-    <app-recent-transactions-card
-      [transactions]="recent"
-      (deleteTransaction)="onDeleteTransaction($event)"
-    ></app-recent-transactions-card>
+    <app-total-income-card [totalIncome]="totalIncome" [loading]="loading"></app-total-income-card>
+    <app-total-expense-card [totalExpense]="totalExpense" [loading]="loading"></app-total-expense-card>
   </div>
   <div class="dashboard-cards">
     <!-- Adicionar gráfico aqui -->
+     <app-recent-transactions-card
+      [transactions]="recent"
+      (deleteTransaction)="onDeleteTransaction($event)"
+    ></app-recent-transactions-card>
     <app-history-chart-card [history]="history"></app-history-chart-card>
   </div>
   <button

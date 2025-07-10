@@ -9,7 +9,9 @@ import { HistoryChartCardComponent } from '../../shared/components/history-chart
 import { Router } from '@angular/router';
 import { AddTransactionModalComponent } from '../../shared/components/add-transaction-modal/add-transaction-modal.component';
 import { ConfirmModalComponent } from '../../shared/components/confirm-modal/confirm-modal.component';
-import { Category } from '../../core/interfaces/transaction.interface'; 
+import { Category } from '../../core/interfaces/transaction.interface';
+import { TotalIncomeCardComponent } from "../../shared/components/total-income-card/total-income-card.component";
+import { TotalExpenseCardComponent } from '../../shared/components/total-expense-card/total-expense-card.component';
 
 @Component({
   selector: 'app-dashboard',
@@ -20,7 +22,9 @@ import { Category } from '../../core/interfaces/transaction.interface';
     HistoryChartCardComponent,
     AddTransactionModalComponent,
     ConfirmModalComponent,
-  ],
+    TotalIncomeCardComponent,
+    TotalExpenseCardComponent
+],
   templateUrl: './dashboard.component.html',
   styleUrl: './dashboard.component.scss',
 })
@@ -29,6 +33,8 @@ export class DashboardComponent implements OnInit {
   categories: Category[] = [];
   categoryLabels = categoryLabels;
   balance: number = 0;
+  totalIncome: number = 0;
+  totalExpense: number = 0;
   history: any[] = [];
   recent: any[] = [];
   showAddTransactionModal = false;
@@ -42,6 +48,10 @@ export class DashboardComponent implements OnInit {
   ) {}
 
   ngOnInit() {
+    this.loadDashboardData();
+  }
+
+  private loadDashboardData() {
     this.loading = true;
 
     this.userService.getCategories().subscribe({
@@ -78,7 +88,41 @@ export class DashboardComponent implements OnInit {
       },
     });
 
+    this.walletService.getTotalIncome().subscribe({
+      next: (res) => (this.totalIncome = res.totalIncome ?? 0),
+      error: (error) => {
+        this.totalIncome = 0;
+        this.handleAuthError(error);
+      },
+    });
+
+    this.walletService.getTotalExpense().subscribe({
+      next: (res) => (this.totalExpense = res.totalExpense ?? 0),
+      error: (error) => {
+        this.totalExpense = 0;
+        this.handleAuthError(error);
+      },
+    });
+
     this.loading = false;
+  }
+
+  private refreshDashboardData() {
+    this.walletService.getBalance().subscribe({
+      next: (res) => (this.balance = res.balance ?? 0),
+    });
+    this.walletService.getHistory().subscribe({
+      next: (res) => (this.history = res.history),
+    });
+    this.walletService.getRecent().subscribe({
+      next: (res) => (this.recent = res.recent),
+    });
+    this.walletService.getTotalIncome().subscribe({
+      next: (res) => (this.totalIncome = res.totalIncome ?? 0),
+    });
+    this.walletService.getTotalExpense().subscribe({
+      next: (res) => (this.totalExpense = res.totalExpense ?? 0),
+    })
   }
 
   private handleAuthError(error: any) {
@@ -115,15 +159,7 @@ export class DashboardComponent implements OnInit {
     this.walletService.createTransaction(payload).subscribe({
       next: () => {
         this.showAddTransactionModal = false;
-        this.walletService.getBalance().subscribe({
-          next: (res) => (this.balance = res.balance ?? 0),
-        });
-        this.walletService.getHistory().subscribe({
-          next: (res) => (this.history = res.history),
-        });
-        this.walletService.getRecent().subscribe({
-          next: (res) => (this.recent = res.recent),
-        });
+        this.refreshDashboardData();
       },
       error: (err) => {
         alert('Erro ao salvar transação!');
@@ -141,15 +177,7 @@ export class DashboardComponent implements OnInit {
     if (!this.transactionToDelete) return;
     this.walletService.deleteTransaction(this.transactionToDelete).subscribe({
       next: () => {
-        this.walletService.getBalance().subscribe({
-          next: (res) => (this.balance = res.balance ?? 0),
-        });
-        this.walletService.getHistory().subscribe({
-          next: (res) => (this.history = res.history),
-        });
-        this.walletService.getRecent().subscribe({
-          next: (res) => (this.recent = res.recent),
-        });
+        this.refreshDashboardData();
         this.showConfirmModal = false;
         this.transactionToDelete = null;
       },

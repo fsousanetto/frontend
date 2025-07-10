@@ -1,0 +1,13 @@
+<section class="container">
+  <div class="totalExpense-card">
+    <p class="label">Total de Despesas</p>
+    <h2 class="amount" [class.loading]="loading">
+      <span *ngIf="!loading">{{ formattedExpense }}</span>
+      <span *ngIf="loading">Carregando...</span>
+    </h2>
+  </div>
+  <div class="totalExpense-image">
+    <i class="fas fa-arrow-down" style="color: #ef4444; font-size: 24px;"></i>
+    <!-- Separar o css depois -->
+  </div>
+</section>
